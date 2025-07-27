@@ -1,27 +1,29 @@
-import { useEffect, useState } from "react";
-import { baseURL } from "../utilitis/Url.js";
+
 import toast from "react-hot-toast";
-import Spinner from "../components/Spinner.jsx";
-import { useLoaderData } from "react-router-dom";
 import useAuth from "../hooks/useAuth.jsx";
+import PropTypes from "prop-types";
 
 // import baseURL from '../utilitis/url.js'
 const AddProductPage = ({ update }) => {
   const { user } = useAuth() || {};
   const handleAddProduct = (e) => {
     e.preventDefault();
+  
 
-    const name = e.target.name.value;
+    const productName = e.target.name.value;
     const price = e.target.price.value;
     const image = e.target.image.value;
     const type = e.target.type.value;
+    const brandName = e.target.brand.value;
+    const rating = e.target.rating.value;
+
     const email = user.email;
 
     // console.log(name, price, image, type)
 
-    const info = { name, price, image, type, email };
+    const info = { productName, brandName, price, rating, image, type, email };
 
-    fetch("http://localhost:5000/addProduct", {
+    fetch("https://giga-gadget.vercel.app/addproduct", {
       method: "POST",
       headers: { "Content-type": "application/json" },
       body:JSON.stringify(info)
@@ -29,7 +31,7 @@ const AddProductPage = ({ update }) => {
       .then(res => res.json())
       .then(data => {
         if (data?.insertedId) {
-        alert("bhai data insert hoice")
+       toast.success('Product Added')
       }
     })
    
@@ -79,15 +81,16 @@ const AddProductPage = ({ update }) => {
                 className="w-full p-2 border rounded-md focus:outline-[#FF497C]"
                 type="text"
                 placeholder="Select Brand"
+                defaultValue="samsung"
               >
-                <option value="Test" selected>
-                  Test
+                <option value="samsung" >
+                  Samsung
                 </option>
-                <option value="Test2" selected>
-                  Test2
+                <option value="apple" >
+                  Apple
                 </option>
-                <option value="Test3" selected>
-                  Test3
+                <option value="vivo" >
+                  Vivo
                 </option>
               </select>
 
@@ -157,5 +160,8 @@ const AddProductPage = ({ update }) => {
     </div>
   );
 };
-
+ 
 export default AddProductPage;
+ AddProductPage.propTypes = {
+    update:PropTypes.func.isRequired,
+  }

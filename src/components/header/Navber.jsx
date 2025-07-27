@@ -17,9 +17,10 @@ const Navber = ({ setDarkMode, darkMode }) => {
 
   const handleLogOut = () => {
     logOut()
-      .then((result) => toast.success("successfully Logout"))
+      .then(() => toast.success("successfully Logout"))
       .catch((err) => toast.error(err));
     setUserOpen(false);
+    navigate('/');
   };
 
   return (
@@ -64,8 +65,8 @@ const Navber = ({ setDarkMode, darkMode }) => {
               </NavLink>
             </li>
             <li>
-              {/* <NavLink
-                to="/myCart"
+              <NavLink
+                to="/myAddedProduct"
                 className={({ isActive, isPending }) =>
                   isPending
                     ? "pending"
@@ -74,9 +75,9 @@ const Navber = ({ setDarkMode, darkMode }) => {
                     : "hover:text-[#FF497C]"
                 }
               >
-                <span>My Cart</span>
-              </NavLink> */}
-              <Link to="/myCart">My Added Product</Link>
+                <span>My Added Products</span>
+              </NavLink>
+             
             </li>
           </ul>
         </nav>
@@ -192,7 +193,7 @@ const Navber = ({ setDarkMode, darkMode }) => {
             <li>
               <NavLink
                 onClick={() => setSideOpen(!sideOpen)}
-                to="/myCart"
+                to="/myAddedProduct"
                 className={({ isActive, isPending }) =>
                   isPending
                     ? "pending"
@@ -201,7 +202,7 @@ const Navber = ({ setDarkMode, darkMode }) => {
                     : "hover:text-[#FF497C]"
                 }
               >
-                <span>My Cart</span>
+                <span>My Added Product</span>
               </NavLink>
             </li>
           </ul>

@@ -10,7 +10,7 @@ const RegisterPage = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const {
-    user,
+    
     signUpWithEmailPassword,
     updateUserProfile,
     loading,
@@ -26,7 +26,7 @@ const RegisterPage = () => {
   // google sign in
   const handleGoogleSignIn = () => {
     googleSignIn()
-      .then((result) => {
+      .then(() => {
         setLoading(false);
         navigate(location?.state ? location.state : "/");
         toast.success("Login successful");
@@ -39,7 +39,7 @@ const RegisterPage = () => {
   // github sign in
   const handleGithubSignIn = () => {
     githubSignIn()
-      .then((result) => {
+      .then(() => {
         setLoading(false);
         navigate(location?.state ? location.state : "/");
         toast.success("Login successful");
@@ -73,7 +73,7 @@ const RegisterPage = () => {
       return;
     }
     // Email Validation
-    if (!/^\w+([.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)) {
+    if (!/^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(email)) {
       toast.error("Please enter a valid email");
       return;
     }
@@ -81,7 +81,7 @@ const RegisterPage = () => {
     console.log("after");
     //create user
     signUpWithEmailPassword(email, password)
-      .then((result) => {
+      .then(() => {
         updateUserProfile({ displayName: name, photoURL: imageURL })
           .then(() => {
             setLoading(false);

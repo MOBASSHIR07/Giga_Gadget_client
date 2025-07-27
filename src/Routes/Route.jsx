@@ -10,10 +10,12 @@ import LoginPage from "../pages/LoginPage";
 import RegisterPage from "../pages/RegisterPage";
 import ProtectedRoute from "../utilitis/ProtectedRoute";
 import {
+  brandLoader,
   oneProductLoader,
   productOfBrands,
-  productsOfCart,
+
 } from "../utilitis/LoaderHandle";
+import BrandProducts from "../components/Cards/BrandProducts";
 
 const Route = createBrowserRouter([
   {
@@ -24,6 +26,16 @@ const Route = createBrowserRouter([
       {
         path: "/",
         element: <HomePage />,
+        children:[
+          {
+             
+        path: "/products/category/:brandName",
+        element: <BrandProducts />,
+        loader: brandLoader, 
+      
+
+          }
+        ]
       },
       {
         path: "/product/add",
@@ -57,10 +69,16 @@ const Route = createBrowserRouter([
         loader: productOfBrands,
       },
       {
-        path: "/myCart",
-        element: <MyCartPage />,
+        path: "/myAddedProduct",
+
+        element: <ProtectedRoute>
+          <MyCartPage />,
+        </ProtectedRoute>
+
         // loader: productsOfCart,
       },
+       
+    
     ],
   },
   {

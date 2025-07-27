@@ -9,7 +9,7 @@ import Spinner from "../components/Spinner";
 const LoginPage = () => {
   const navigate = useNavigate();
   const {
-    user,
+    
     signInWithEmailPassword,
     googleSignIn,
     githubSignIn,
@@ -20,7 +20,7 @@ const LoginPage = () => {
   // google sign in
   const handleGoogleSignIn = () => {
     googleSignIn()
-      .then((result) => {
+      .then(() => {
         setLoading(false);
         navigate(location?.state ? location.state : "/");
         toast.success("Login successful");
@@ -33,7 +33,7 @@ const LoginPage = () => {
   // github sign in
   const handleGithubSignIn = () => {
     githubSignIn()
-      .then((result) => {
+      .then(() => {
         setLoading(false);
         navigate(location?.state ? location.state : "/");
         toast.success("Login successful");
@@ -54,7 +54,7 @@ const LoginPage = () => {
 
     // Sign In
     signInWithEmailPassword(email, password)
-      .then((result) => {
+      .then(() => {
         setLoading(false);
         navigate(location?.state ? location.state : "/");
         toast.success("Login successful");

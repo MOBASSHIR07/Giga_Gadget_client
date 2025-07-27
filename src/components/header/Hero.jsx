@@ -1,20 +1,19 @@
 import heroImg1 from "../../assets/Hero/2.png";
 import heroImg2 from "../../assets/Hero/lgFreeze.png";
 import heroImg3 from "../../assets/Hero/applelaptop.png";
-import { EffectFade, Autoplay } from "swiper/modules";
+import {Autoplay } from "swiper/modules";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 
 // Import Swiper styles
 import "swiper/css";
-import "swiper/css/effect-fade";
+import 'swiper/css/pagination'
+import { Pagination } from 'swiper/modules';
 
 const Hero = () => {
   return (
     <div className="gadgetContainer lg:h-[600px]  bg-gradient-to-r from-[#F9F3F0] from-10% via-[#FCE7DC] via-30% to-[#F9F3F0] to-90% dark:bg-gradient-to-r dark:from-[#f2f2d8] dark:from-10% dark:via-[#FCE7DC] dark:via-30% dark:to-[#fae1d4]">
       <Swiper
-        effect={"fade"}
-        fadeEffect={{ crossFade: true }}
         slidesPerView={1}
         spaceBetween={30}
         centeredSlides={true}
@@ -22,7 +21,10 @@ const Hero = () => {
           delay: 3000,
           disableOnInteraction: false,
         }}
-        modules={[Autoplay, EffectFade]}
+        pagination={{
+          clickable: true,
+        }}
+        modules={[Autoplay, Pagination]}
         className="mySwiper"
       >
         {/* slide 1 */}
@@ -120,11 +122,11 @@ const Hero = () => {
                 </p>
 
                 <p className="xl:text-[50px] lg:text-[40px] md:text-[32px] text-[30px] font-bold text-center md:text-left">
-                Shop Smart, Shop <br /> TechWonders 
-                
+                  Shop Smart, Shop <br /> TechWonders
+
                 </p>
                 <p className="font-medium text-black/60 md:text-lg text-center md:text-left">
-                Find the perfect tech solutions for your lifestyle.
+                  Find the perfect tech solutions for your lifestyle.
                 </p>
 
                 <div className="flex justify-center md:justify-start">
